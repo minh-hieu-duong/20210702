@@ -1,0 +1,41 @@
+﻿@model ProductVM
+
+<form asp-action="Create" method="post" class="container">
+    <div class="form-group mt-4">
+        <label >Id</label>
+        <input asp-for="@Model.Product.Id" class="form-control" />
+        <span asp-validation-for="@Model.Product.Id" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-4">
+        <label>Name</label>
+        <input asp-for="@Model.Product.Name" class="form-control" />
+        <span asp-validation-for="@Model.Product.Name" class="text-danger"></span>
+    </div> <div class="form-group mt-4">
+        <label>Unit price</label>
+        <input asp-for="@Model.Product.UnitPrice" class="form-control" />
+        <span asp-validation-for="@Model.Product.UnitPrice" class="text-danger"></span>
+    </div> <div class="form-group mt-4">
+        <label>Image</label>
+        <input asp-for="@Model.Product.Image" class="form-control" />
+        <span asp-validation-for="@Model.Product.Image" class="text-danger"></span>
+    </div>
+   <div class="form-group mt-4">
+        <label>Available</label>
+        <input asp-for="@Model.Product.Available" type="checkbox" />
+        <span asp-validation-for="@Model.Product.Available" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-2">
+        <label>Category</label>
+       <select asp-for="Product.CategoryId" asp-items="@Model.Category" class="form-select">
+            <option value="-1" disabled selected>--Select Category--</option>
+        </select>
+        <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-4">
+        <label >Description</label>
+        <input asp-for="@Model.Product.Description" class="form-control" />
+        <span asp-validation-for="@Model.Product.Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Create</button>
+</form>

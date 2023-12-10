@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bai4</title>
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.css">
+    <!-- font-awesome icons -->
+    <link href="~/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="~/js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    @Html.Partial("DuongMinhHieu_Header");
+    @RenderBody()
+    @Html.Partial("DuongMinhHieu_Footer");
+
+ 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $("#search-btn").click(function (e) {
+            var keyword = $("#keyword").val();
+            var data = { keyword: keyword };
+            $.ajax({
+                url: "Home/SearchProduct",
+                data: data,
+                success: function (res) {
+                    $("div#content").html(res)
+                }
+            })
+        })
+
+        $("#search-btn").click(function (e) {
+            var keyword = $("#keyword").val();
+            var data = { keyword: keyword };
+            $.ajax({
+                url: "Home/SearchProduct",
+                data: data,
+                success: function (res) {
+                    $("div#content").html(res)
+                }
+            })
+        })
+
+        $('#categoryDropdown').on('change', function () {
+            var selectedCategoryId = $(this).val();
+            $.ajax({
+                url: 'Home/SearchProductByCategory',
+                data: { id: selectedCategoryId },
+                success: function (res) {
+                    $("div#content").html(res)
+                },
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+   
+</html>
